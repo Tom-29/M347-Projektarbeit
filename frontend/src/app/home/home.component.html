@@ -1,0 +1,5 @@
+<a href="/add">Add new Note</a>
+<div *ngFor="let note of notes">
+  <p>{{note.title}}</p>
+  <a *ngIf="note.title != null" href="/note/{{note.id}}">Visit</a>
+</div>

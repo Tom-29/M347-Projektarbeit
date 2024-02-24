@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Titel:</label>
+    <input type="text" id="title" name="title" [(ngModel)]="title">
+  </div>
+  <div>
+    <label for="content">Inhalt:</label>
+    <textarea id="content" name="content" [(ngModel)]="text"></textarea>
+  </div>
+  <button type="submit">Notiz hinzufügen</button>
+</form>
+

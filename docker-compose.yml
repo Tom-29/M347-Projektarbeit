@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14.1-alpine
+    container_name: database
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=note
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports: 
+      - '4200:4200'
+    depends_on:
+      - backend
+
+volumes:
+  db:
+    driver: local
